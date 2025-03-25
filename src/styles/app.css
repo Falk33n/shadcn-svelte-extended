@@ -84,54 +84,18 @@
 	--sidebar-ring: oklch(87.09% 0.0055 286.29);
 }
 
-@keyframes accordion-vertical-open {
+@keyframes accordion-open {
 	from {
 		height: 0;
 	}
 	to {
-		height: var(--hawkui-accordion-content-height);
+		height: var(--shadcn-accordion-content-height);
 	}
 }
 
-@keyframes accordion-vertical-close {
+@keyframes accordion-close {
 	from {
-		height: var(--hawkui-accordion-content-height);
-	}
-	to {
-		height: 0;
-	}
-}
-
-@keyframes accordion-horizontal-open {
-	from {
-		width: 0;
-	}
-	to {
-		width: var(--hawkui-accordion-content-width);
-	}
-}
-
-@keyframes accordion-horizontal-close {
-	from {
-		width: var(--hawkui-accordion-content-width);
-	}
-	to {
-		width: 0;
-	}
-}
-
-@keyframes collapsible-open {
-	from {
-		height: 0;
-	}
-	to {
-		height: var(--hawkui-collapsible-content-height);
-	}
-}
-
-@keyframes collapsible-close {
-	from {
-		height: var(--hawkui-collapsible-content-height);
+		height: var(--shadcn-accordion-content-height);
 	}
 	to {
 		height: 0;
