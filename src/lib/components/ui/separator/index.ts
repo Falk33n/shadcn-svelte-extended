@@ -1,7 +1,4 @@
-import Root from "./separator.svelte";
+import { default as Separator } from './separator.svelte';
+import type { SeparatorProps } from './types';
 
-export {
-	Root,
-	//
-	Root as Separator,
-};
+export { Separator as Root, Separator, type SeparatorProps as RootProps, type SeparatorProps };
