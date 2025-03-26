@@ -1,35 +1,35 @@
-import { useSidebar } from "./context.svelte.js";
-import Content from "./sidebar-content.svelte";
-import Footer from "./sidebar-footer.svelte";
-import GroupAction from "./sidebar-group-action.svelte";
-import GroupContent from "./sidebar-group-content.svelte";
-import GroupLabel from "./sidebar-group-label.svelte";
-import Group from "./sidebar-group.svelte";
-import Header from "./sidebar-header.svelte";
-import Input from "./sidebar-input.svelte";
-import Inset from "./sidebar-inset.svelte";
-import MenuAction from "./sidebar-menu-action.svelte";
-import MenuBadge from "./sidebar-menu-badge.svelte";
-import MenuButton from "./sidebar-menu-button.svelte";
-import MenuItem from "./sidebar-menu-item.svelte";
-import MenuSkeleton from "./sidebar-menu-skeleton.svelte";
-import MenuSubButton from "./sidebar-menu-sub-button.svelte";
-import MenuSubItem from "./sidebar-menu-sub-item.svelte";
-import MenuSub from "./sidebar-menu-sub.svelte";
-import Menu from "./sidebar-menu.svelte";
-import Provider from "./sidebar-provider.svelte";
-import Rail from "./sidebar-rail.svelte";
-import Separator from "./sidebar-separator.svelte";
-import Trigger from "./sidebar-trigger.svelte";
-import Root from "./sidebar.svelte";
+import { useSidebar } from './context.svelte.js';
+import SidebarContent, { type SidebarContentProps } from './sidebar-content.svelte';
+import SidebarFooter, { type SidebarFooterProps } from './sidebar-footer.svelte';
+import SidebarGroupAction, { type SidebarGroupActionProps } from './sidebar-group-action.svelte';
+import SidebarGroupContent, { type SidebarGroupContentProps } from './sidebar-group-content.svelte';
+import SidebarGroupLabel, { type SidebarGroupLabelProps } from './sidebar-group-label.svelte';
+import Group from './sidebar-group.svelte';
+import Header from './sidebar-header.svelte';
+import Input from './sidebar-input.svelte';
+import Inset from './sidebar-inset.svelte';
+import MenuAction from './sidebar-menu-action.svelte';
+import MenuBadge from './sidebar-menu-badge.svelte';
+import MenuButton from './sidebar-menu-button.svelte';
+import MenuItem from './sidebar-menu-item.svelte';
+import MenuSkeleton from './sidebar-menu-skeleton.svelte';
+import MenuSubButton from './sidebar-menu-sub-button.svelte';
+import MenuSubItem from './sidebar-menu-sub-item.svelte';
+import MenuSub from './sidebar-menu-sub.svelte';
+import Menu from './sidebar-menu.svelte';
+import Provider from './sidebar-provider.svelte';
+import Rail from './sidebar-rail.svelte';
+import Separator from './sidebar-separator.svelte';
+import Trigger from './sidebar-trigger.svelte';
+import Root from './sidebar.svelte';
 
 export {
-	Content,
-	Footer,
+	SidebarContent as Content,
+	SidebarFooter as Footer,
 	Group,
-	GroupAction,
-	GroupContent,
-	GroupLabel,
+	SidebarGroupAction as GroupAction,
+	SidebarGroupContent as GroupContent,
+	SidebarGroupLabel as GroupLabel,
 	Header,
 	Input,
 	Inset,
@@ -46,14 +46,13 @@ export {
 	Rail,
 	Root,
 	Separator,
-	//
 	Root as Sidebar,
-	Content as SidebarContent,
-	Footer as SidebarFooter,
+	SidebarContent,
+	SidebarFooter,
 	Group as SidebarGroup,
-	GroupAction as SidebarGroupAction,
-	GroupContent as SidebarGroupContent,
-	GroupLabel as SidebarGroupLabel,
+	SidebarGroupAction,
+	SidebarGroupContent,
+	SidebarGroupLabel,
 	Header as SidebarHeader,
 	Input as SidebarInput,
 	Inset as SidebarInset,
@@ -72,4 +71,14 @@ export {
 	Trigger as SidebarTrigger,
 	Trigger,
 	useSidebar,
+	type SidebarContentProps as ContentProps,
+	type SidebarFooterProps as FooterProps,
+	type SidebarGroupActionProps as GroupActionProps,
+	type SidebarGroupContentProps as GroupContentProps,
+	type SidebarGroupLabelProps as GroupLabelProps,
+	type SidebarContentProps,
+	type SidebarFooterProps,
+	type SidebarGroupActionProps,
+	type SidebarGroupContentProps,
+	type SidebarGroupLabelProps,
 };
