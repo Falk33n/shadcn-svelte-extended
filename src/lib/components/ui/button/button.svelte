@@ -32,7 +32,6 @@
 </script>
 
 {#if href}
-	<!-- Cast `...restProps` to HTMLAnchorAttributes to ensure compatibility with the anchor element. -->
 	<a
 		bind:this={ref}
 		class={buttonClasses}
@@ -42,7 +41,6 @@
 		{@render children?.()}
 	</a>
 {:else}
-	<!-- Cast `...restProps` to HTMLButtonAttributes to ensure compatibility with the button element. -->
 	<button
 		bind:this={ref}
 		class={buttonClasses}
