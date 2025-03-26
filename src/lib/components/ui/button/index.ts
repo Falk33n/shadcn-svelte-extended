@@ -1,6 +1,9 @@
-import Button from './button.svelte';
-import type { ButtonProps } from './types';
-import { type ButtonSize, type ButtonVariant, buttonVariants } from './variants';
+import Button, {
+	type ButtonProps,
+	type ButtonSize,
+	type ButtonVariant,
+	buttonVariants,
+} from './button.svelte';
 
 export {
 	Button,
