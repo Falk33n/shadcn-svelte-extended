@@ -1,7 +1,4 @@
-import Root from "./skeleton.svelte";
+import { default as Skeleton } from './skeleton.svelte';
+import type { SkeletonProps } from './types';
 
-export {
-	Root,
-	//
-	Root as Skeleton,
-};
+export { Skeleton as Root, Skeleton, type SkeletonProps as RootProps, type SkeletonProps };

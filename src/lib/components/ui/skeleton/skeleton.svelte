@@ -1,17 +1,13 @@
 <script lang="ts">
-	import type { WithElementRef, WithoutChildren } from "bits-ui";
-	import type { HTMLAttributes } from "svelte/elements";
-	import { cn } from "$lib/utils.js";
+	import { cn } from '$lib/utils';
+	import type { SkeletonProps } from './types';
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		...restProps
-	}: WithoutChildren<WithElementRef<HTMLAttributes<HTMLDivElement>>> = $props();
+	let { ref = $bindable(null), class: className, ...restProps }: SkeletonProps = $props();
 </script>
 
 <div
 	bind:this={ref}
-	class={cn("bg-muted animate-pulse rounded-md", className)}
+	class={cn('bg-muted animate-pulse rounded-md', className)}
+	aria-hidden="true"
 	{...restProps}
 ></div>
