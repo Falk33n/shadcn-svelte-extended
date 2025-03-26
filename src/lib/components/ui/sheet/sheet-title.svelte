@@ -1,16 +1,29 @@
+<script
+	lang="ts"
+	module
+>
+	import { Dialog as SheetPrimitive, type WithElementRef, type WithoutChild } from 'bits-ui';
+
+	export type SheetTitleProps = WithoutChild<
+		WithElementRef<Omit<SheetPrimitive.TitleProps, 'ref'>, HTMLDivElement>
+	>;
+</script>
+
 <script lang="ts">
-	import { Dialog as SheetPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
+		children,
 		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: SheetPrimitive.TitleProps = $props();
+	}: SheetTitleProps = $props();
 </script>
 
 <SheetPrimitive.Title
 	bind:ref
-	class={cn("text-foreground text-lg font-semibold", className)}
+	class={cn('text-foreground text-lg font-semibold', className)}
 	{...restProps}
-/>
+>
+	{@render children?.()}
+</SheetPrimitive.Title>

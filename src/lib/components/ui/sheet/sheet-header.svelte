@@ -1,19 +1,27 @@
+<script
+	lang="ts"
+	module
+>
+	import type { WithElementRef } from 'bits-ui';
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	export type SheetHeaderProps = WithElementRef<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+</script>
+
 <script lang="ts">
-	import type { HTMLAttributes } from "svelte/elements";
-	import type { WithElementRef } from "bits-ui";
-	import { cn } from "$lib/utils.js";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
-		class: className,
 		children,
+		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
+	}: SheetHeaderProps = $props();
 </script>
 
 <div
 	bind:this={ref}
-	class={cn("flex flex-col space-y-2 text-center sm:text-left", className)}
+	class={cn('flex flex-col space-y-2 text-center sm:text-left', className)}
 	{...restProps}
 >
 	{@render children?.()}

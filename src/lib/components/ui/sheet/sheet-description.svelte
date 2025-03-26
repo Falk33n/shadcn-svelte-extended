@@ -1,16 +1,29 @@
+<script
+	lang="ts"
+	module
+>
+	import { Dialog as SheetPrimitive, type WithElementRef, type WithoutChild } from 'bits-ui';
+
+	export type SheetDescriptionProps = WithoutChild<
+		WithElementRef<Omit<SheetPrimitive.DescriptionProps, 'ref'>, HTMLDivElement>
+	>;
+</script>
+
 <script lang="ts">
-	import { Dialog as SheetPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
+		children,
 		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: SheetPrimitive.DescriptionProps = $props();
+	}: SheetDescriptionProps = $props();
 </script>
 
 <SheetPrimitive.Description
 	bind:ref
-	class={cn("text-muted-foreground text-sm", className)}
+	class={cn('text-muted-foreground text-sm', className)}
 	{...restProps}
-/>
+>
+	{@render children?.()}
+</SheetPrimitive.Description>
