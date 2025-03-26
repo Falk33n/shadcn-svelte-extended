@@ -1,19 +1,29 @@
-import type { WithElementRef } from 'bits-ui';
+import type { WithElementRef, WithoutChildren } from 'bits-ui';
 import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
 
 type InputTypeWithoutFile = Exclude<HTMLInputTypeAttribute, 'file'>;
 
-/**
- * Allows binding the `files` prop when the input type is `file`, without
- * causing linting errors.
- */
-type InputPropsWithTypeFile = { type: 'file'; files?: FileList };
+type InputPropsWithTypeFile = {
+	/** The input `type` is required to be `"file"` when binding the `files` prop. */
+	type: 'file';
 
-/**
- * Prevents binding the `files` prop unless the input type is `file`.
- */
-type InputPropsWithoutTypeFile = { type?: InputTypeWithoutFile; files?: never };
+	/** Allows binding a `FileList` when the input `type` is `"file"`. */
+	files?: FileList;
+};
 
-type InputPropsWithoutHTML = WithElementRef<InputPropsWithoutTypeFile | InputPropsWithTypeFile>;
-type InputPropsWithHTML = Omit<HTMLInputAttributes, 'type'>;
+type InputPropsWithoutTypeFile = {
+	/** Any input `type` other than 'file'. */
+	type?: InputTypeWithoutFile;
+
+	/** The `files` prop is disallowed unless `type` is `"file"`. */
+	files?: never;
+};
+
+type InputPropsWithoutHTML = WithElementRef<
+	InputPropsWithoutTypeFile | InputPropsWithTypeFile,
+	HTMLInputElement
+>;
+
+type InputPropsWithHTML = WithoutChildren<Omit<HTMLInputAttributes, 'type'>>;
+
 export type InputProps = InputPropsWithoutHTML & InputPropsWithHTML;
