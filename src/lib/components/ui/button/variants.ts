@@ -1,17 +1,18 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 
 /**
+ * @description
  * Applies different styles to the button using `tailwind-variants` based on
  * the chosen `variant` and `size` props.
  *
- * - `variant`: Defines the color style of the button.
- *   @defaultValue `"primary"`
+ * @property `variant`: Defines the color style of the button.
+ * @defaultValue `"primary"`
  *
- * - `size`: Defines the size of the button.
- *   @defaultValue `"md"`
+ * @property `size`: Defines the size of the button.
+ * @defaultValue `"md"`
  */
 export const buttonVariants = tv({
-	base: 'ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-75 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+	base: 'focus-visible:ring-offset-background focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors duration-200 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-75 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
 	variants: {
 		variant: {
 			primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
@@ -35,12 +36,5 @@ export const buttonVariants = tv({
 	},
 });
 
-/**
- * @description Color styles for the button.
- */
 export type ButtonVariant = VariantProps<typeof buttonVariants>['variant'];
-
-/**
- * @description Size styles for the button.
- */
 export type ButtonSize = VariantProps<typeof buttonVariants>['size'];

@@ -6,27 +6,35 @@ import { type ButtonSize, type ButtonVariant } from './variants';
 // BUTTON ELEMENT PROPS
 //
 
-/**
- * Defines props for the button element, explicitly disallowing `href`
- * to prevent incorrect usage as a link.
- */
-type ButtonElementPropsWithoutHTML = WithElementRef<{ href?: never }, HTMLButtonElement>;
+type ButtonElementPropsWithoutHTML = WithElementRef<
+	{
+		/** @description The `href` prop is disallowed unless `type` is `undefined`. */
+		href?: never;
+	},
+	HTMLButtonElement
+>;
+
 type ButtonElementPropsWithHTML = HTMLButtonAttributes;
+
 type ButtonElementProps = ButtonElementPropsWithoutHTML & ButtonElementPropsWithHTML;
 
 //
 // ANCHOR ELEMENT PROPS
 //
 
-/**
- * Defines props for the anchor element, explicitly requiring `href`
- * and disallowing `type` to prevent incorrect usage.
- */
 type AnchorElementPropsWithoutHTML = WithElementRef<
-	{ type?: never; href: string },
+	{
+		/** @description The `type` prop is disallowed unless ´href` is `undefined`. */
+		type?: never;
+
+		/** @description Explicitly require `href`. */
+		href: NonNullable<HTMLAnchorAttributes['href']>;
+	},
 	HTMLAnchorElement
 >;
+
 type AnchorElementPropsWithHTML = Omit<HTMLAnchorAttributes, 'href'>;
+
 type AnchorElementProps = AnchorElementPropsWithoutHTML & AnchorElementPropsWithHTML;
 
 //
@@ -35,16 +43,18 @@ type AnchorElementProps = AnchorElementPropsWithoutHTML & AnchorElementPropsWith
 
 type ButtonPropsWithoutHTML = {
 	/**
-	 * Applies color styles to the button.
+	 * @description Applies color styles to the button.
 	 * @defaultValue `"primary"`
 	 */
 	variant?: ButtonVariant;
 
 	/**
-	 * Applies size styles to the button.
+	 * @description Applies size styles to the button.
 	 * @defaultValue `"md"`
 	 */
 	size?: ButtonSize;
 };
+
 type ButtonPropsWithHTML = ButtonElementProps | AnchorElementProps;
+
 export type ButtonProps = ButtonPropsWithoutHTML & ButtonPropsWithHTML;

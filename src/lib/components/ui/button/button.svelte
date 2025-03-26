@@ -19,7 +19,6 @@
 	}: ButtonProps = $props();
 
 	// Prevent both `type` and `href` from being defined simultaneously.
-	// This ensures the element behaves correctly as either a <button> or an <a>.
 	type = href ? undefined : type;
 	href = type ? undefined : href;
 
@@ -27,8 +26,7 @@
 
 	onMount(() => {
 		if (!ref) return;
-		// Adds `onkeydown`, `onclick` and `onfocus` events to the button making it
-		// create a ripple animation when the user interacts with the button.
+		// Adds `onkeydown`, `onclick` and `onfocus` events to the ref.
 		addRippleEffect(ref);
 	});
 </script>
