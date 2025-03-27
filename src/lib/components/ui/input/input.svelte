@@ -3,7 +3,11 @@
 	module
 >
 	import type { WithElementRef, WithoutChildren } from 'bits-ui';
-	import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
+	import type {
+		HTMLInputAttributes,
+		HTMLInputTypeAttribute,
+		HTMLTextareaAttributes,
+	} from 'svelte/elements';
 
 	//
 	// FILE PROPS
@@ -28,14 +32,27 @@
 	};
 
 	//
+	// VALUE PROPS
+	//
+
+	type InputValueAttribute = HTMLTextareaAttributes['value'];
+
+	//
 	// INPUT PROPS
 	//
 
+	type InputWithValueProps = {
+		/** @description Explicity type the `value` prop. */
+		value?: InputValueAttribute;
+	};
+
 	type InputBaseProps = WithoutChildren<
-		WithElementRef<Omit<HTMLInputAttributes, 'type'>, HTMLInputElement>
+		WithElementRef<Omit<HTMLInputAttributes, 'type' | 'value'>, HTMLInputElement>
 	>;
 
-	export type InputProps = InputBaseProps & (InputWithoutTypeFileProps | InputWithTypeFileProps);
+	export type InputProps = InputBaseProps &
+		InputWithValueProps &
+		(InputWithoutTypeFileProps | InputWithTypeFileProps);
 </script>
 
 <script lang="ts">
@@ -63,6 +80,7 @@
 		bind:value
 		class={inputClasses}
 		type="file"
+		multiple
 		{...restProps}
 	/>
 {:else}

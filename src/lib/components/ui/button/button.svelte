@@ -16,9 +16,11 @@
 	 * the chosen `variant` and `size` props.
 	 *
 	 * @property `variant`: Defines the color style of the button.
+	 *
 	 * @defaultValue `"primary"`
 	 *
 	 * @property `size`: Defines the size of the button.
+	 *
 	 * @defaultValue `"md"`
 	 */
 	export const buttonVariants = tv({
@@ -87,12 +89,14 @@
 	type ButtonBaseProps = {
 		/**
 		 * @description Applies color styles to the button.
+		 *
 		 * @defaultValue `"primary"`
 		 */
 		variant?: ButtonVariant;
 
 		/**
 		 * @description Applies size styles to the button.
+		 *
 		 * @defaultValue `"md"`
 		 */
 		size?: ButtonSize;
@@ -122,7 +126,7 @@
 
 	onMount(() => {
 		if (!ref) return;
-		// Adds `onkeydown`, `onclick` and `onfocus` events to the ref.
+		// This will make an ripple animation appear each time interaction happens.
 		addRippleEffect(ref);
 	});
 </script>
