@@ -15,6 +15,7 @@
 	 * the chosen `side` prop.
 	 *
 	 * @property `side`: Defines the side of the screen the sheet will appear.
+	 *
 	 * @defaultValue `"right"`
 	 */
 	export const sheetContentVariants = tv({
@@ -47,8 +48,12 @@
 		 */
 		portalProps?: SheetPrimitive.PortalProps;
 
+		/** @description Adds an reference to the close trigger component */
+		closeRef?: HTMLButtonElement | null;
+
 		/**
 		 * @description Defines the side of the screen the sheet content will appear.
+		 *
 		 * @defaultValue `"right"`
 		 */
 		side?: SheetContentSide;
@@ -59,8 +64,9 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { addRippleEffect, cn } from '$lib/utils';
 	import XIcon from '@lucide/svelte/icons/x';
+	import { onMount } from 'svelte';
 	import SheetOverlay from './sheet-overlay.svelte';
 
 	let {
@@ -68,9 +74,16 @@
 		class: className,
 		side = 'right',
 		ref = $bindable(null),
+		closeRef = $bindable(null),
 		portalProps,
 		...restProps
 	}: SheetContentProps = $props();
+
+	onMount(() => {
+		if (!closeRef) return;
+		// This will make an ripple animation appear each time interaction happens.
+		addRippleEffect(closeRef);
+	});
 </script>
 
 <SheetPrimitive.Portal {...portalProps}>
@@ -83,6 +96,7 @@
 		{@render children?.()}
 
 		<SheetPrimitive.Close
+			bind:ref={closeRef}
 			class="data-[state=open]:bg-secondary focus-visible:ring-ring ring-offset-background absolute top-4 right-4 rounded-sm opacity-75 transition-opacity hover:opacity-100 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-none disabled:pointer-events-none"
 			aria-label="Close"
 		>
