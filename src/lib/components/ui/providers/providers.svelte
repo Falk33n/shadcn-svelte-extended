@@ -1,9 +1,13 @@
 <script lang="ts">
-	import { Tooltip as TooltipPrimitive, type WithChildren } from 'bits-ui';
+	import type { WithChildren } from 'bits-ui';
+	import { SidebarProvider } from '../sidebar';
+	import { TooltipProvider } from '../tooltip';
 
 	let { children }: WithChildren = $props();
 </script>
 
-<TooltipPrimitive.Provider>
-	{@render children?.()}
-</TooltipPrimitive.Provider>
+<TooltipProvider delayDuration={0}>
+	<SidebarProvider>
+		{@render children?.()}
+	</SidebarProvider>
+</TooltipProvider>
