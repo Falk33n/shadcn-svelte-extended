@@ -1,20 +1,31 @@
+<script
+	lang="ts"
+	module
+>
+	import type { WithElementRef } from 'bits-ui';
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	export type SidebarMenuProps = WithElementRef<
+		HTMLAttributes<HTMLUListElement>,
+		HTMLUListElement
+	>;
+</script>
+
 <script lang="ts">
-	import { cn } from "$lib/utils.js";
-	import type { WithElementRef } from "bits-ui";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
-		class: className,
 		children,
+		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: WithElementRef<HTMLAttributes<HTMLUListElement>, HTMLUListElement> = $props();
+	}: SidebarMenuProps = $props();
 </script>
 
 <ul
 	bind:this={ref}
 	data-sidebar="menu"
-	class={cn("flex w-full min-w-0 flex-col gap-1", className)}
+	class={cn('flex w-full min-w-0 flex-col gap-1', className)}
 	{...restProps}
 >
 	{@render children?.()}

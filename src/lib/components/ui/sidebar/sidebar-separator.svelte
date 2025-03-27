@@ -1,18 +1,21 @@
-<script lang="ts">
-	import { Separator } from "$lib/components/ui/separator/index.js";
-	import { cn } from "$lib/utils.js";
-	import type { ComponentProps } from "svelte";
+<script
+	lang="ts"
+	module
+>
+	import { Separator, type SeparatorProps } from '../separator';
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		...restProps
-	}: ComponentProps<typeof Separator> = $props();
+	export type SidebarSeparatorProps = SeparatorProps;
+</script>
+
+<script lang="ts">
+	import { cn } from '$lib/utils';
+
+	let { class: className, ref = $bindable(null), ...restProps }: SidebarSeparatorProps = $props();
 </script>
 
 <Separator
 	bind:ref
 	data-sidebar="separator"
-	class={cn("bg-sidebar-border mx-2 w-auto", className)}
+	class={cn('bg-sidebar-border mx-2 w-auto', className)}
 	{...restProps}
 />

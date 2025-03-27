@@ -1,23 +1,27 @@
+<script
+	lang="ts"
+	module
+>
+	import { Input, type InputProps } from '../input';
+
+	export type SidebarInputProps = InputProps;
+</script>
+
 <script lang="ts">
-	import type { ComponentProps } from "svelte";
-	import { Input } from "$lib/components/ui/input/index.js";
-	import { cn } from "$lib/utils.js";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
-		value = $bindable(""),
 		class: className,
+		value = $bindable(''),
+		ref = $bindable(null),
 		...restProps
-	}: ComponentProps<typeof Input> = $props();
+	}: SidebarInputProps = $props();
 </script>
 
 <Input
 	bind:ref
 	bind:value
 	data-sidebar="input"
-	class={cn(
-		"bg-background focus-visible:ring-sidebar-ring h-8 w-full shadow-none focus-visible:ring-2",
-		className
-	)}
+	class={cn('bg-background focus-visible:ring-sidebar-ring h-8 w-full shadow-none', className)}
 	{...restProps}
 />

@@ -3,7 +3,7 @@
 	module
 >
 	import type { WithElementRef } from 'bits-ui';
-	import type { Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	type SidebarGroupActionBaseProps = {
@@ -21,7 +21,7 @@
 </script>
 
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { addRippleEffect, cn } from '$lib/utils';
 
 	let {
 		children,
@@ -41,6 +41,12 @@
 		),
 		'data-sidebar': 'group-action',
 		...restProps,
+	});
+
+	onMount(() => {
+		if (!ref) return;
+		// This will make an ripple animation appear each time interaction happens.
+		addRippleEffect(ref);
 	});
 </script>
 

@@ -1,17 +1,32 @@
-<script lang="ts">
-	import { cn } from '$lib/utils.js';
+<script
+	lang="ts"
+	module
+>
 	import type { WithElementRef } from 'bits-ui';
-	import type { HTMLAttributes } from 'svelte/elements';
-	import { useSidebar } from './context.svelte.js';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
+
+	export type SidebarRailProps = WithElementRef<HTMLButtonAttributes, HTMLButtonElement>;
+</script>
+
+<script lang="ts">
+	import { addRippleEffect, cn } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import { useSidebar } from './context.svelte';
 
 	let {
-		ref = $bindable(null),
-		class: className,
 		children,
+		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: WithElementRef<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement> = $props();
+	}: SidebarRailProps = $props();
 
 	const sidebar = useSidebar();
+
+	onMount(() => {
+		if (!ref) return;
+		// This will make an ripple animation appear each time interaction happens.
+		addRippleEffect(ref);
+	});
 </script>
 
 <button

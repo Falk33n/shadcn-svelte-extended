@@ -1,20 +1,28 @@
+<script
+	lang="ts"
+	module
+>
+	import type { WithElementRef } from 'bits-ui';
+	import type { HTMLLiAttributes } from 'svelte/elements';
+
+	export type SidebarMenuItemProps = WithElementRef<HTMLLiAttributes, HTMLLIElement>;
+</script>
+
 <script lang="ts">
-	import { cn } from "$lib/utils.js";
-	import type { WithElementRef } from "bits-ui";
-	import type { HTMLAttributes } from "svelte/elements";
+	import { cn } from '$lib/utils';
 
 	let {
-		ref = $bindable(null),
-		class: className,
 		children,
+		class: className,
+		ref = $bindable(null),
 		...restProps
-	}: WithElementRef<HTMLAttributes<HTMLLIElement>, HTMLLIElement> = $props();
+	}: SidebarMenuItemProps = $props();
 </script>
 
 <li
 	bind:this={ref}
 	data-sidebar="menu-item"
-	class={cn("group/menu-item relative", className)}
+	class={cn('group/menu-item relative', className)}
 	{...restProps}
 >
 	{@render children?.()}
