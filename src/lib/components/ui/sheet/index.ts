@@ -1,4 +1,10 @@
-import { Dialog as SheetPrimitive } from 'bits-ui';
+import {
+	Dialog as SheetPrimitive,
+	type DialogCloseProps as SheetCloseProps,
+	type DialogPortalProps as SheetPortalProps,
+	type DialogRootProps as SheetProps,
+	type DialogTriggerProps as SheetTriggerProps,
+} from 'bits-ui';
 import SheetContent, { type SheetContentProps } from './sheet-content.svelte';
 import SheetDescription, { type SheetDescriptionProps } from './sheet-description.svelte';
 import SheetFooter, { type SheetFooterProps } from './sheet-footer.svelte';
@@ -32,16 +38,24 @@ export {
 	SheetTrigger,
 	SheetTitle as Title,
 	SheetTrigger as Trigger,
+	type SheetCloseProps as CloseProps,
 	type SheetContentProps as ContentProps,
 	type SheetDescriptionProps as DescriptionProps,
 	type SheetFooterProps as FooterProps,
 	type SheetHeaderProps as HeaderProps,
 	type SheetOverlayProps as OverlayProps,
+	type SheetPortalProps as PortalProps,
+	type SheetProps as RootProps,
+	type SheetCloseProps,
 	type SheetContentProps,
 	type SheetDescriptionProps,
 	type SheetFooterProps,
 	type SheetHeaderProps,
 	type SheetOverlayProps,
+	type SheetPortalProps,
+	type SheetProps,
 	type SheetTitleProps,
+	type SheetTriggerProps,
 	type SheetTitleProps as TitleProps,
+	type SheetTriggerProps as TriggerProps,
 };
