@@ -1,9 +1,5 @@
 import { Dialog as SheetPrimitive } from 'bits-ui';
-import SheetContent, {
-	type SheetContentProps,
-	type SheetContentSide,
-	sheetContentVariants,
-} from './sheet-content.svelte';
+import SheetContent, { type SheetContentProps } from './sheet-content.svelte';
 import SheetDescription, { type SheetDescriptionProps } from './sheet-description.svelte';
 import SheetFooter, { type SheetFooterProps } from './sheet-footer.svelte';
 import SheetHeader, { type SheetHeaderProps } from './sheet-header.svelte';
@@ -27,7 +23,6 @@ export {
 	Sheet,
 	SheetClose,
 	SheetContent,
-	sheetContentVariants,
 	SheetDescription,
 	SheetFooter,
 	SheetHeader,
@@ -43,7 +38,6 @@ export {
 	type SheetHeaderProps as HeaderProps,
 	type SheetOverlayProps as OverlayProps,
 	type SheetContentProps,
-	type SheetContentSide,
 	type SheetDescriptionProps,
 	type SheetFooterProps,
 	type SheetHeaderProps,
